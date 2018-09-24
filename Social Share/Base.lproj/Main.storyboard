@@ -99,7 +99,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view alpha="0.80000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MEX-i6-XL6">
+                            <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MEX-i6-XL6">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3CA-BR-yMf">
@@ -118,12 +118,22 @@
                                             <segue destination="BYZ-38-t0r" kind="presentation" id="J15-F2-u5H"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan QR Code" textAlignment="natural" lineBreakMode="tailTruncation" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pMz-Nq-Vb8">
+                                        <rect key="frame" x="124" y="20.666666666666671" width="165" height="32"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.38741374020000002" green="0.0" blue="0.39549177889999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="pMz-Nq-Vb8" secondAttribute="trailing" constant="125.06" id="1Od-2d-kSc"/>
                                     <constraint firstAttribute="bottom" secondItem="3CA-BR-yMf" secondAttribute="bottom" constant="13" id="5P1-C0-t8p"/>
                                     <constraint firstAttribute="height" constant="70" id="Ocn-p2-2GH"/>
                                     <constraint firstItem="3CA-BR-yMf" firstAttribute="leading" secondItem="MEX-i6-XL6" secondAttribute="leading" constant="15" id="X9I-FE-vdn"/>
+                                    <constraint firstItem="pMz-Nq-Vb8" firstAttribute="top" secondItem="MEX-i6-XL6" secondAttribute="top" constant="20.510000000000002" id="XRf-Zi-yah"/>
+                                    <constraint firstAttribute="bottom" secondItem="pMz-Nq-Vb8" secondAttribute="bottom" constant="17.489999999999998" id="cVl-9u-HLi"/>
+                                    <constraint firstItem="pMz-Nq-Vb8" firstAttribute="leading" secondItem="3CA-BR-yMf" secondAttribute="trailing" constant="90.939999999999998" id="pgL-Tv-8bi"/>
                                 </constraints>
                             </view>
                         </subviews>
