@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VXQ-iQ-kSy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VXQ-iQ-kSy">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -98,16 +98,52 @@
                     <view key="view" contentMode="scaleToFill" id="b7x-Gu-tiQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.80000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MEX-i6-XL6">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3CA-BR-yMf">
+                                        <rect key="frame" x="15" y="39" width="18" height="18"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="18" id="1Wj-3q-wVO"/>
+                                            <constraint firstAttribute="width" constant="18" id="QOA-jc-4yP"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="18" id="k1W-HH-Wc6"/>
+                                            <constraint firstAttribute="height" constant="18" id="ls9-8o-Ou4"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <state key="normal" title="X">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="BYZ-38-t0r" kind="presentation" id="J15-F2-u5H"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="3CA-BR-yMf" secondAttribute="bottom" constant="13" id="5P1-C0-t8p"/>
+                                    <constraint firstAttribute="height" constant="70" id="Ocn-p2-2GH"/>
+                                    <constraint firstItem="3CA-BR-yMf" firstAttribute="leading" secondItem="MEX-i6-XL6" secondAttribute="leading" constant="15" id="X9I-FE-vdn"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="MEX-i6-XL6" firstAttribute="top" secondItem="b7x-Gu-tiQ" secondAttribute="top" id="5kG-oJ-t3K"/>
+                            <constraint firstItem="MEX-i6-XL6" firstAttribute="leading" secondItem="b7x-Gu-tiQ" secondAttribute="leading" id="BhF-fk-QSw"/>
+                            <constraint firstItem="MEX-i6-XL6" firstAttribute="trailing" secondItem="OzZ-DL-46s" secondAttribute="trailing" id="aA6-z0-Ooi"/>
+                            <constraint firstItem="MEX-i6-XL6" firstAttribute="top" secondItem="b7x-Gu-tiQ" secondAttribute="top" id="j8V-sy-nU1"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="OzZ-DL-46s"/>
                     </view>
                     <connections>
+                        <outlet property="topBar" destination="MEX-i6-XL6" id="YJ7-dP-aCp"/>
                         <segue destination="htr-q2-ef7" kind="presentation" identifier="toAddAcounts" id="hqe-L7-cOZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TdN-5t-AQT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1993" y="968"/>
+            <point key="canvasLocation" x="1992.753623188406" y="967.66304347826099"/>
         </scene>
         <!--Sharing Info-->
         <scene sceneID="jea-qf-AQu">
@@ -567,7 +603,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhU-0H-mdf">
-                                                    <rect key="frame" x="100" y="16" width="257" height="36"/>
+                                                    <rect key="frame" x="100" y="16" width="252" height="36"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -855,9 +891,8 @@
         <image name="Twitter Icon" width="1680" height="1671"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7Wi-p3-lqj"/>
         <segue reference="8LH-k2-bHA"/>
         <segue reference="DXJ-yD-eUA"/>
-        <segue reference="zMj-Se-4dB"/>
+        <segue reference="J15-F2-u5H"/>
     </inferredMetricsTieBreakers>
 </document>
