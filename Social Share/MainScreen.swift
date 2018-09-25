@@ -7,25 +7,83 @@
 //
 
 import UIKit
-//import CoreMotion
+import Contacts
 
 class MainScreen: UIViewController {
     
-    @IBOutlet weak var mainLabel: UILabel!
-    @IBOutlet weak var QRCodeImage: UIImageView!
-    
     let defaults = UserDefaults.standard
-//    let motion = CMMotionManager()
     var userInfo = UserInfo()
     var generalInfo = GeneralInfo()
     var info: UserInfo?
     var qrString = ""
     var handle: [Handle] = []
-//    var faceUp = false
-//    var faceDown = false
+    
+    var friendFName: String = ""
+    var friendLName: String = ""
+    var friendPhone: String = ""
+    var friendEmail = ""
+    var friendHandles: [String] = []
+    
+    var setAddVisible = false
+    let blurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+    
+    @IBOutlet weak var addFacebook: UIButton!
+    @IBOutlet weak var addInstagram: UIButton!
+    @IBOutlet weak var addTwitter: UIButton!
+    @IBOutlet weak var addScreen: UIView!
+    @IBOutlet weak var mainLabel: UILabel!
+    @IBOutlet weak var QRCodeImage: UIImageView!
+    
+    @IBAction func doneAdding(_ sender: UIButton) {
+        addScreen.isHidden = true
+        blurEffectView.isHidden = true
+        view.backgroundColor = UIColor.init(red: 99/255, green: 0/255, blue: 101/255, alpha: 1)
+    }
+    @IBAction func addContact(_ sender: UIButton) {
+        let contact = CNMutableContact()
+        contact.givenName = friendFName
+        print(contact.givenName)
+        contact.familyName = friendLName
+        print(contact.familyName)
+        contact.phoneNumbers = [CNLabeledValue(
+            label:CNLabelPhoneNumberiPhone,
+            value:CNPhoneNumber(stringValue: friendPhone))]
+        contact.emailAddresses = [CNLabeledValue(label:CNLabelHome, value: (friendEmail as NSString))]
+        
+        // Saves contact
+        let store = CNContactStore()
+        let saveRequest = CNSaveRequest()
+        saveRequest.add(contact, toContainerWithIdentifier:nil)
+        try! store.execute(saveRequest)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if !setAddVisible {
+            addScreen.isHidden = true
+            blurEffectView.isHidden = true
+        } else {
+            if !UIAccessibilityIsReduceTransparencyEnabled() {
+                addBlur()
+            }
+        }
+        if friendHandles.count > 0 {
+            if friendHandles[0] == "" {
+                addFacebook.isEnabled = false
+            }
+        
+            if friendHandles[1] == "" {
+                addInstagram.isEnabled = false
+            }
+        
+            if friendHandles[2] == "" {
+                addTwitter.isEnabled = false
+            }
+        }
+        
+        addScreen.layer.cornerRadius = 5
+        addScreen.layer.masksToBounds = true
         
         info = (NSKeyedUnarchiver.unarchiveObject(withFile: UserDefaults.standard.object(forKey: "File Path") as! String) as! UserInfo)
         qrString = generalInfo.createQRString(user: info!)
@@ -42,12 +100,27 @@ class MainScreen: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if segue.identifier == "quickEditInfo" {
             let vc = segue.destination as! SharingInfo
             vc.mainScreen = self
-        }
-        
-        if segue.identifier == "editInfo" {
+            
+        } else if segue.identifier == "facebook" {
+            let vc = segue.destination as! inAppWeb
+            let username: String = friendHandles[0]
+            vc.website = "https://www.facebook.com/\(username)"
+            
+        } else if segue.identifier == "twitter" {
+            let vc = segue.destination as! inAppWeb
+            let username: String = friendHandles[1]
+            vc.website = "https://www.twitter.com/\(username)"
+            
+        } else if segue.identifier == "instagram" {
+            let vc = segue.destination as! inAppWeb
+            let username: String = friendHandles[2]
+            vc.website = "https://www.instagram.com/\(username)"
+            
+        } else if segue.identifier == "editInfo" {
             let vc = segue.destination as! GeneralInfo
             vc.userInfo = self.info!
             vc.editingUser = true
@@ -68,48 +141,30 @@ class MainScreen: UIViewController {
         }
     }
     
-    func future() {
-    // Kept in case of Bluetooth
+    func addBlur() {
+        view.backgroundColor = UIColor.init(red: 62/255, green: 0/255, blue: 63/255, alpha: 1)
+        
+        blurEffectView.frame = self.view.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.addSubview(blurEffectView)
+        view.bringSubview(toFront: addScreen)
+    }
     
-//    @IBAction func startSharingActions(_ sender: UIButton) {
-//        sharingButton.isHidden = true
-//        sharingButton.isEnabled = false
-//        if motion.isDeviceMotionAvailable {
-//            motion.accelerometerUpdateInterval = 1
-//            self.mainLabel.text = "Hold Phone Face Up"
-//
-//            motion.startAccelerometerUpdates(to: OperationQueue.current!) {(data, error) in
-//                if let myData = data {
-//
-//                    self.checkFaceUp(data: myData)
-//                    self.checkFaceDown(data: myData)
-//                    
-//                }
-//            }
-//        }
-//    }
-    
-//    func checkFaceDown(data: CMAccelerometerData){
-//        if !faceDown {
-//            if data.acceleration.z > 0 {
-//                let vc = self.storyboard?.instantiateViewController(withIdentifier: "AddAccounts") as! AddAccounts
-//                self.present(vc, animated: true, completion: nil)
-//            }
-//        }
-//    }
-//
-//    func checkFaceUp(data: CMAccelerometerData){
-//        if !faceUp {
-//            if data.acceleration.z < 0 {
-//                self.mainLabel.text = "Flip Phone Down & Hold"
-//                faceUp = true
-//            }
-//        }
-//    }
-    
-//    func updateLabel(){
-//        setLabel.text = socialBusiness.titleForSegment(at: socialBusiness.selectedSegmentIndex)
-//    }
+    func saveRecievedInfo(info: String){
+        // sort once shared
+        let theirInfo = info.components(separatedBy: ",")
+        
+        friendFName = theirInfo[0]
+        
+        friendLName = theirInfo[1]
+        
+        friendPhone = theirInfo[2]
+        
+        friendEmail = theirInfo[3]
+        
+        friendHandles.append(theirInfo[4])
+        friendHandles.append(theirInfo[5])
+        friendHandles.append(String(theirInfo[6].dropLast()))
     }
 }
 

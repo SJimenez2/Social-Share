@@ -91,6 +91,6 @@ class AddAccounts: UIViewController {
 
         friendHandles.append(theirInfo[4])
         friendHandles.append(theirInfo[5])
-        friendHandles.append(String(theirInfo[6].dropLast()))
+        friendHandles.append(theirInfo[6])
     }
 }

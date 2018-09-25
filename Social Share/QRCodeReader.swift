@@ -67,8 +67,9 @@ class QRViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toAddAcounts" {
-            let vc = segue.destination as! AddAccounts
+        if segue.identifier == "addAccounts" {
+            let vc = segue.destination as! MainScreen
+            vc.setAddVisible = true
             vc.saveRecievedInfo(info: theirInfo)
         }
     }
@@ -83,15 +84,11 @@ extension QRViewController: AVCaptureMetadataOutputObjectsDelegate {
     
     func metadataOutput(_ captureOutput: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         
-        if metadataObjects.count != 0
-        {
-            if let object = metadataObjects[0] as? AVMetadataMachineReadableCodeObject
-            {
-                if object.type == AVMetadataObject.ObjectType.qr
-                {
+        if metadataObjects.count != 0 {
+            if let object = metadataObjects[0] as? AVMetadataMachineReadableCodeObject {
+                if object.type == AVMetadataObject.ObjectType.qr {
                     theirInfo = object.stringValue!
-                    
-                    performSegue(withIdentifier: "toAddAcounts", sender: self)
+                    performSegue(withIdentifier: "addAccounts", sender: self)
                 }
             }
         }
