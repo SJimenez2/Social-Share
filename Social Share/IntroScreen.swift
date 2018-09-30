@@ -15,6 +15,8 @@ class IntroScreen: UIViewController {
     
     override func viewDidLoad() {
         saveType.isHidden = true
+        view.setGradientBackground(colorOne: Colors.classicPurple, colorTwo: Colors.purpleBlack)
+
     }
     
     @IBAction func changeVC(_ sender: UIButton) {

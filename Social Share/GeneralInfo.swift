@@ -123,6 +123,16 @@ public class GeneralInfo: UIViewController , UITableViewDelegate, UITableViewDat
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)  as! InfoTableViewCell
         //take the handle at indexPath.row and set handle and image variables equal to the cell's label and image
         let handle = handles[indexPath.row]
+        
+        if handle.Image ==  UIImage(named: "Instagram Icon") {
+            cell.setGradientBackground(colorOne: Colors.magenta, colorTwo: Colors.lightOrange)
+        } else if handle.Image == UIImage(named: "Facebook Icon") {
+            cell.setGradientBackground(colorOne: Colors.blue, colorTwo: Colors.white)
+        } else if handle.Image == UIImage(named: "Twitter Icon") {
+            cell.setGradientBackground(colorOne: Colors.skyBlue, colorTwo: Colors.white)
+        }
+
+        
         cell.tableViewLabel.text = handle.Handle
         cell.tableViewImage.image = handle.Image
         //return the completed cell

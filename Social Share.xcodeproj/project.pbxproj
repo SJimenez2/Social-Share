@@ -26,6 +26,7 @@
 		70D287A32161693B002F9080 /* FutureBle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D287A22161693B002F9080 /* FutureBle.swift */; };
 		9AB4EA1A1FABA2FC00F3FA60 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB4EA191FABA2FC00F3FA60 /* UserInfo.swift */; };
 		9AB4EA1C1FABAC6700F3FA60 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB4EA1B1FABAC6700F3FA60 /* Extensions.swift */; };
+		FBD921DD2161735C00FA97B5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD921DC2161735C00FA97B5 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		70D287A22161693B002F9080 /* FutureBle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureBle.swift; sourceTree = "<group>"; };
 		9AB4EA191FABA2FC00F3FA60 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		9AB4EA1B1FABAC6700F3FA60 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		FBD921DC2161735C00FA97B5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				49C3B9381FD890B400D14464 /* Handle.swift */,
 				9AB4EA191FABA2FC00F3FA60 /* UserInfo.swift */,
 				70488A4C1FAA786E00081186 /* AppDelegate.swift */,
+				FBD921DC2161735C00FA97B5 /* Constants.swift */,
 				703DD1E71FB1FC2C001F6795 /* IntroScreen.swift */,
 				494C97871FAAA7E800D8F67B /* GeneralInfo.swift */,
 				70488A4E1FAA786E00081186 /* MainScreen.swift */,
@@ -180,6 +183,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				70488A4F1FAA786E00081186 /* MainScreen.swift in Sources */,
+				FBD921DD2161735C00FA97B5 /* Constants.swift in Sources */,
 				494C978F1FAC9D4200D8F67B /* SaveHandle.swift in Sources */,
 				70B6BE331FB1419600C76CA4 /* AddAccounts.swift in Sources */,
 				70488A4D1FAA786E00081186 /* AppDelegate.swift in Sources */,
