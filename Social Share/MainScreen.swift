@@ -12,17 +12,13 @@ import Contacts
 class MainScreen: UIViewController {
     
     let defaults = UserDefaults.standard
-    var userInfo = UserInfo()
     var generalInfo = GeneralInfo()
     var info: UserInfo?
     var qrString = ""
     var handle: [Handle] = []
     
-    var friendFName: String = ""
-    var friendLName: String = ""
-    var friendPhone: String = ""
-    var friendEmail = ""
-    var friendHandles: [String] = []
+    var friendHandles = [String : String]()
+    var platforms: [String] = ["facebook", "twitter", "instagram"]
     
     var setAddVisible = false
     let blurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
@@ -41,14 +37,14 @@ class MainScreen: UIViewController {
     }
     @IBAction func addContact(_ sender: UIButton) {
         let contact = CNMutableContact()
-        contact.givenName = friendFName
+        contact.givenName = friendHandles["fName"]!
         print(contact.givenName)
-        contact.familyName = friendLName
+        contact.familyName = friendHandles["lName"]!
         print(contact.familyName)
         contact.phoneNumbers = [CNLabeledValue(
             label:CNLabelPhoneNumberiPhone,
-            value:CNPhoneNumber(stringValue: friendPhone))]
-        contact.emailAddresses = [CNLabeledValue(label:CNLabelHome, value: (friendEmail as NSString))]
+            value:CNPhoneNumber(stringValue: friendHandles["phone"]!))]
+        contact.emailAddresses = [CNLabeledValue(label:CNLabelHome, value: (friendHandles["email"]! as NSString))]
         
         // Saves contact
         let store = CNContactStore()
@@ -68,18 +64,17 @@ class MainScreen: UIViewController {
                 addBlur()
             }
         }
-        if friendHandles.count > 0 {
-            if friendHandles[0] == "" {
-                addFacebook.isEnabled = false
-            }
         
-            if friendHandles[1] == "" {
-                addInstagram.isEnabled = false
-            }
-        
-            if friendHandles[2] == "" {
-                addTwitter.isEnabled = false
-            }
+        if friendHandles["Facebook"] == "" {
+            addFacebook.isEnabled = false
+        }
+    
+        if friendHandles["Instagram"] == "" {
+            addInstagram.isEnabled = false
+        }
+    
+        if friendHandles["Twitter"] == "" {
+            addTwitter.isEnabled = false
         }
         
         addScreen.layer.cornerRadius = 5
@@ -105,39 +100,25 @@ class MainScreen: UIViewController {
             let vc = segue.destination as! SharingInfo
             vc.mainScreen = self
             
-        } else if segue.identifier == "facebook" {
-            let vc = segue.destination as! inAppWeb
-            let username: String = friendHandles[0]
-            vc.website = "https://www.facebook.com/\(username)"
-            
-        } else if segue.identifier == "twitter" {
-            let vc = segue.destination as! inAppWeb
-            let username: String = friendHandles[1]
-            vc.website = "https://www.twitter.com/\(username)"
-            
-        } else if segue.identifier == "instagram" {
-            let vc = segue.destination as! inAppWeb
-            let username: String = friendHandles[2]
-            vc.website = "https://www.instagram.com/\(username)"
-            
         } else if segue.identifier == "editInfo" {
             let vc = segue.destination as! GeneralInfo
             vc.userInfo = self.info!
             vc.editingUser = true
             for i in 0..<3 {
                 var platform = ""
-                if i == 0 {
-                    platform = "Facebook"
-                } else if i == 1 {
-                    platform = "Twitter"
-                } else {
-                    platform = "Instagram"
-                }
+                platform = platforms[i]
                 if info?.handles[i] != "" {
                     handle.append(Handle.init(handle1: (info?.handles[i])!, platform1: platform))
                 }
             }
             vc.handles = handle
+        } else if segue.identifier == "facebook" ||
+                  segue.identifier == "twitter" ||
+                  segue.identifier == "instagram" {
+            let vc = segue.destination as! inAppWeb
+            let username: String = friendHandles[segue.identifier!]!
+            vc.website = "https://www.\(segue.identifier!).com/\(username)"
+            print(vc.website)
         }
     }
     
@@ -154,17 +135,13 @@ class MainScreen: UIViewController {
         // sort once shared
         let theirInfo = info.components(separatedBy: ",")
         
-        friendFName = theirInfo[0]
-        
-        friendLName = theirInfo[1]
-        
-        friendPhone = theirInfo[2]
-        
-        friendEmail = theirInfo[3]
-        
-        friendHandles.append(theirInfo[4])
-        friendHandles.append(theirInfo[5])
-        friendHandles.append(String(theirInfo[6].dropLast()))
+        friendHandles["fName"] = theirInfo[4]
+        friendHandles["lName"] = theirInfo[1]
+        friendHandles["phone"] = theirInfo[2]
+        friendHandles["email"] = theirInfo[3]
+        friendHandles["facebook"] = theirInfo[4]
+        friendHandles["instagram"] = theirInfo[5]
+        friendHandles["twitter"] = String(theirInfo[6].dropLast())
     }
 }
 
