@@ -10,7 +10,7 @@ import Foundation
 
 func future() {
     // Kept in case of Bluetooth
-            
+    
     //    @IBAction func startSharingActions(_ sender: UIButton) {
     //        sharingButton.isHidden = true
     //        sharingButton.isEnabled = false
@@ -28,7 +28,7 @@ func future() {
     //            }
     //        }
     //    }
-            
+    
     //    func checkFaceDown(data: CMAccelerometerData){
     //        if !faceDown {
     //            if data.acceleration.z > 0 {
@@ -46,7 +46,7 @@ func future() {
     //            }
     //        }
     //    }
-            
+    
     //    func updateLabel(){
     //        setLabel.text = socialBusiness.titleForSegment(at: socialBusiness.selectedSegmentIndex)
     //    }
