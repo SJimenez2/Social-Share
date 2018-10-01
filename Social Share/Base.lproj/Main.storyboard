@@ -73,7 +73,7 @@
                                         <rect key="frame" x="103" y="383" width="69" height="48"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <state key="normal" title="Done">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="doneAdding:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mUH-63-h7l"/>
@@ -95,7 +95,6 @@
                                                         <rect key="frame" x="195" y="0.0" width="40" height="36"/>
                                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <connections>
-                                                            <action selector="addContact:" destination="htr-q2-ef7" eventType="touchUpInside" id="JcS-v5-bJC"/>
                                                             <action selector="addContact:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Uki-Y4-feq"/>
                                                             <action selector="addContacts:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lv4-1g-78k"/>
                                                         </connections>
@@ -159,7 +158,7 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="WT0-vJ-1V3" firstAttribute="centerX" secondItem="OXs-IF-dfl" secondAttribute="centerX" id="BS5-7T-W0S"/>
                                     <constraint firstItem="yCc-i1-KVJ" firstAttribute="centerX" secondItem="OXs-IF-dfl" secondAttribute="centerX" id="E4W-4c-LSj"/>
@@ -386,132 +385,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jla-m1-RXt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1043" y="1743"/>
-        </scene>
-        <!--Add Accounts-->
-        <scene sceneID="5sb-Rm-KEk">
-            <objects>
-                <viewController id="htr-q2-ef7" customClass="AddAccounts" customModule="Social_Share" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="uv5-Ez-CbD">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qeD-NA-jLf">
-                                <rect key="frame" x="50" y="130" width="275" height="377"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KBG-nd-kYt">
-                                        <rect key="frame" x="108.5" y="313" width="58" height="42"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <state key="normal" title="Done">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="BYZ-38-t0r" kind="presentation" identifier="addAccountsDone" id="ov3-79-suA"/>
-                                        </connections>
-                                    </button>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="73G-VX-r4I">
-                                        <rect key="frame" x="0.0" y="58" width="275" height="168"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="j5a-1h-eCO">
-                                                <rect key="frame" x="0.0" y="0.0" width="275" height="36"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="Yy0-cM-TQ6">
-                                                        <rect key="frame" x="0.0" y="0.0" width="137.5" height="36"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tVr-Ee-STa">
-                                                        <rect key="frame" x="137.5" y="0.0" width="137.5" height="36"/>
-                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <connections>
-                                                            <action selector="addContact:" destination="htr-q2-ef7" eventType="touchUpInside" id="IYG-Wx-gv0"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="baL-Ci-Pfy">
-                                                <rect key="frame" x="0.0" y="44" width="275" height="36"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facebook" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="0ul-ej-C5Z">
-                                                        <rect key="frame" x="0.0" y="0.0" width="137.5" height="36"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XiR-Zu-K5d">
-                                                        <rect key="frame" x="137.5" y="0.0" width="137.5" height="36"/>
-                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="s04-Hg-x9v">
-                                                <rect key="frame" x="0.0" y="88" width="275" height="36"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagram" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="jmb-FS-t3c">
-                                                        <rect key="frame" x="0.0" y="0.0" width="137.5" height="36"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yUD-bP-4Gx">
-                                                        <rect key="frame" x="137.5" y="0.0" width="137.5" height="36"/>
-                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="6aI-ZB-KLo">
-                                                <rect key="frame" x="0.0" y="132" width="275" height="36"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="avy-ml-2FU">
-                                                        <rect key="frame" x="0.0" y="0.0" width="137.5" height="36"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ubT-i2-XW4">
-                                                        <rect key="frame" x="137.5" y="0.0" width="137.5" height="36"/>
-                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="KBG-nd-kYt" firstAttribute="centerX" secondItem="qeD-NA-jLf" secondAttribute="centerX" id="1Nj-Oy-V6Z"/>
-                                    <constraint firstItem="73G-VX-r4I" firstAttribute="centerX" secondItem="qeD-NA-jLf" secondAttribute="centerX" id="3r3-KL-UOc"/>
-                                    <constraint firstItem="KBG-nd-kYt" firstAttribute="top" secondItem="73G-VX-r4I" secondAttribute="bottom" constant="87" id="Qus-Ab-Eva"/>
-                                    <constraint firstItem="73G-VX-r4I" firstAttribute="width" secondItem="qeD-NA-jLf" secondAttribute="width" id="fJV-br-Cjb"/>
-                                    <constraint firstItem="KBG-nd-kYt" firstAttribute="centerX" secondItem="qeD-NA-jLf" secondAttribute="centerX" id="kgL-1E-Pr3"/>
-                                    <constraint firstAttribute="bottom" secondItem="KBG-nd-kYt" secondAttribute="bottom" constant="22" id="tvU-N1-X21"/>
-                                </constraints>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q2k-oS-yYA">
-                                <rect key="frame" x="147" y="130" width="81" height="48"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" red="0.38741374015808105" green="0.0" blue="0.39549177885055542" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="en8-xZ-YmP" firstAttribute="trailing" secondItem="qeD-NA-jLf" secondAttribute="trailing" constant="50" id="0gX-rk-Ptl"/>
-                            <constraint firstItem="Q2k-oS-yYA" firstAttribute="centerX" secondItem="uv5-Ez-CbD" secondAttribute="centerX" id="Bon-ya-XfA"/>
-                            <constraint firstItem="qeD-NA-jLf" firstAttribute="leading" secondItem="en8-xZ-YmP" secondAttribute="leading" constant="50" id="ZcA-HQ-ZYF"/>
-                            <constraint firstItem="en8-xZ-YmP" firstAttribute="bottom" secondItem="qeD-NA-jLf" secondAttribute="bottom" constant="160" id="f4J-nE-CbY"/>
-                            <constraint firstItem="qeD-NA-jLf" firstAttribute="top" secondItem="en8-xZ-YmP" secondAttribute="top" constant="110" id="gjL-dU-uBj"/>
-                            <constraint firstItem="Q2k-oS-yYA" firstAttribute="top" secondItem="qeD-NA-jLf" secondAttribute="top" id="yOd-YP-sAP"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="en8-xZ-YmP"/>
-                    </view>
-                    <connections>
-                        <outlet property="menuBox" destination="qeD-NA-jLf" id="i9B-9b-VpB"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XNz-iG-u1l" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3263" y="926"/>
         </scene>
         <!--In App Web-->
         <scene sceneID="4TY-a7-ngX">

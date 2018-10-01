@@ -54,7 +54,7 @@ class SharingInfo: UIViewController {
     func checkEnabledSwitches() {
         let info = UserDefaults.standard.object(forKey: "SharedInfo") as! String
         let theirInfo = info.components(separatedBy: ",")
-        email1 = theirInfo[3]
+        
         if theirInfo[3] == "" {
             Email.setOn(false, animated: false)
         }
