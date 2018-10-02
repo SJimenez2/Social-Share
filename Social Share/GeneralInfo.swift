@@ -126,15 +126,16 @@ public class GeneralInfo: UIViewController , UITableViewDelegate, UITableViewDat
         
         if handle.Image ==  UIImage(named: "Instagram Icon") {
             cell.setGradientBackground(colorOne: Colors.magenta, colorTwo: Colors.lightOrange)
+            cell.tableViewImage.image = UIImage(named: "InstagramTransparent")
         } else if handle.Image == UIImage(named: "Facebook Icon") {
             cell.setGradientBackground(colorOne: Colors.blue, colorTwo: Colors.white)
+            cell.tableViewImage.image = UIImage(named: "FacebookTransparent")
         } else if handle.Image == UIImage(named: "Twitter Icon") {
             cell.setGradientBackground(colorOne: Colors.skyBlue, colorTwo: Colors.white)
+            cell.tableViewImage.image = UIImage(named: "TwitterTransparent")
         }
-
         
         cell.tableViewLabel.text = handle.Handle
-        cell.tableViewImage.image = handle.Image
         //return the completed cell
         return cell
     }
