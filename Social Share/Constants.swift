@@ -28,3 +28,11 @@ struct Colors {
     static let white = UIColor(red: 254/255, green: 254/255, blue: 254/255, alpha: 1.0)
 }
 
+struct Keys {
+    static let FName = "firstName"
+    static let LName = "lastName"
+    static let Email = "email"
+    static let Phone = "phone"
+    static let Handles = "Handles"
+}
+

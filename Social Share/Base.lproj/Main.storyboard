@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share Your QR Code" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="zgq-rb-ltx">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share Info" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="zgq-rb-ltx">
                                 <rect key="frame" x="16" y="60" width="343" height="165"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="69"/>
                                 <color key="textColor" red="0.98692566156387329" green="0.95303839445114136" blue="0.97325259447097778" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -60,7 +60,7 @@
                                     <segue destination="du0-bn-Swd" kind="presentation" identifier="editInfo" id="Q39-Ct-11R"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OXs-IF-dfl">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OXs-IF-dfl">
                                 <rect key="frame" x="50" y="152" width="275" height="363"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="yCc-i1-KVJ">
@@ -725,7 +725,7 @@
                                             <color key="titleColor" red="0.98221057649999999" green="0.94566708799999999" blue="0.96933490040000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="presentation" identifier="toMain" id="HDM-ey-xqA"/>
+                                            <segue destination="BYZ-38-t0r" kind="presentation" id="Eay-ef-9eJ"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -748,7 +748,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tog-sn-ZxV">
-                                                    <rect key="frame" x="100" y="7" width="164" height="36"/>
+                                                    <rect key="frame" x="100" y="7" width="219" height="36"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -839,6 +839,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="KSL-uJ-S8w"/>
                     <connections>
+                        <outlet property="email" destination="2mR-fD-IBt" id="s9U-w0-RE9"/>
+                        <outlet property="firstName" destination="x2e-YM-ztc" id="0Yl-97-6gg"/>
+                        <outlet property="lastName" destination="90c-nO-5ia" id="EIs-fb-AGg"/>
+                        <outlet property="phoneNum" destination="YIZ-hS-pA9" id="RVb-qh-Gva"/>
                         <outlet property="saveButton" destination="KTB-av-Zoz" id="6oU-Ur-pJY"/>
                         <outlet property="table" destination="ycM-kt-Alr" id="dZY-36-h4z"/>
                     </connections>
@@ -855,8 +859,7 @@
         <image name="Twitter Icon" width="1680" height="1671"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="OK1-Dg-Boc"/>
-        <segue reference="8LH-k2-bHA"/>
-        <segue reference="i0b-W8-QUQ"/>
+        <segue reference="6nC-V0-d7w"/>
+        <segue reference="Eay-ef-9eJ"/>
     </inferredMetricsTieBreakers>
 </document>

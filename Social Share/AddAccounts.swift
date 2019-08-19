@@ -30,9 +30,7 @@ class AddAccounts: UIViewController {
     @IBAction func addContact(_ sender: UIButton) {
         let contact = CNMutableContact()
         contact.givenName = friendFName
-        print(contact.givenName)
         contact.familyName = friendLName
-        print(contact.familyName)
         contact.phoneNumbers = [CNLabeledValue(
             label:CNLabelPhoneNumberiPhone,
             value:CNPhoneNumber(stringValue: friendPhone))]
@@ -41,7 +39,7 @@ class AddAccounts: UIViewController {
         // Saves contact
         let store = CNContactStore()
         let saveRequest = CNSaveRequest()
-        saveRequest.add(contact, toContainerWithIdentifier:nil)
+        saveRequest.add(contact, toContainerWithIdentifier: nil)
         try! store.execute(saveRequest)
     }
     

@@ -17,9 +17,8 @@ public class GeneralInfo: UIViewController , UITableViewDelegate, UITableViewDat
     @IBOutlet weak var table: UITableView!
     @IBOutlet weak var saveButton: UIButton!
     
-    
     let saveHandle = SaveHandle()
-    var userInfo = UserInfo()
+    var userInfo = UserInfo();
     var editingUser = false
     
     var handles: [Handle] = []
@@ -51,15 +50,18 @@ public class GeneralInfo: UIViewController , UITableViewDelegate, UITableViewDat
     }
     
     private func loadTableData() {
-        if let ourData = NSKeyedUnarchiver.unarchiveObject(withFile: UserDefaults.standard.object(forKey: "File Path") as! String) as? [Handle] {
-            handles = ourData
-        }
+//        if let ourData = NSKeyedUnarchiver.unarchiveObject(withFile: UserDefaults.standard.object(forKey: "File Path") as! String) as? [Handle] {
+//            handles = ourData
+//        }
+        handles = UserDefaults.standard.array(forKey: "handles") as! [Handle]
     }
     
     // UserDefaults.standard.object(forKey: "File Path") returns nil
     private func saveData(handle: Handle) {
         handles.append(handle)
-        NSKeyedArchiver.archiveRootObject(handles, toFile: UserDefaults.standard.object(forKey: "File Path") as! String)
+//        NSKeyedArchiver.archiveRootObject(handles, toFile: UserDefaults.standard.object(forKey: "File Path") as! String)
+
+        UserDefaults.standard.set(handles, forKey: "handles")
     }
     
     func createQRString(user: UserInfo) -> String {
@@ -83,14 +85,12 @@ public class GeneralInfo: UIViewController , UITableViewDelegate, UITableViewDat
     //if we are segueing to MainScreen
     override public func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toMain" {
-            
             UserDefaults.standard.set(true, forKey: "Opened Before")
-            UserDefaults.standard.set(filePath, forKey: "File Path")
-            userInfo = UserInfo.init(fname1: firstName.text!, lname1: lastName.text!, phone1: phoneNum.text!, email1: email.text!, handlesArray: handles)
-            NSKeyedArchiver.archiveRootObject(userInfo, toFile: filePath)
-            if let ourData = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as? UserInfo {
-                userInfo = ourData
-            }
+            userInfo.setData(fname: firstName.text!, lname: lastName.text!, phone: phoneNum.text!, email: email.text!, handlesArray: handles)
+//            NSKeyedArchiver.archiveRootObject(userInfo, toFile: filePath)
+//            if let ourData = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as? UserInfo {
+//                userInfo = ourData
+//            }
         }
     }
     
@@ -123,7 +123,8 @@ public class GeneralInfo: UIViewController , UITableViewDelegate, UITableViewDat
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)  as! InfoTableViewCell
         //take the handle at indexPath.row and set handle and image variables equal to the cell's label and image
         let handle = handles[indexPath.row]
-        
+//        print(handle.Image.accessibilityIdentifier)
+
         if handle.Image ==  UIImage(named: "Instagram Icon") {
             cell.setGradientBackground(colorOne: Colors.magenta, colorTwo: Colors.lightOrange)
             cell.tableViewImage.image = UIImage(named: "InstagramTransparent")
@@ -150,45 +151,39 @@ public class GeneralInfo: UIViewController , UITableViewDelegate, UITableViewDat
                 return
             }
         }
-        guard
-            let fName = firstName.text, !fName.isEmpty,
-            let lName = lastName.text, !lName.isEmpty,
-            let phone = phoneNum.text, !phone.isEmpty
-            else {
-                saveButton.isEnabled = false
-                return
+        
+        if(firstName.text!.isEmpty || lastName.text!.isEmpty || phoneNum.text!.isEmpty) {
+            saveButton.isEnabled = false
+            saveButton.tintColor = UIColor.black
+        } else {
+            saveButton.isEnabled = true
         }
-        saveButton.isEnabled = true
-        saveButton.tintColor = UIColor.black
     }
     
     public func tableView(_ tableView: UITableView, editActionsForRowAt: IndexPath) -> [UITableViewRowAction]? {
-        let edit = UITableViewRowAction(style: .normal, title: "Edit") { action, index in
-            
-            if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SaveHandle") as? SaveHandle
-            {
+        let edit = UITableViewRowAction(style: .normal, title: "Edit") {
+            action,
+            index in if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SaveHandle") as? SaveHandle {
                 let editedInfo = self.handles.remove(at: editActionsForRowAt.row)
-                
                 vc.enteredHandle = editedInfo.getHandle()
                 vc.name = editedInfo.getString()
+                
                 self.present(vc, animated: true, completion: nil)
             }
         }
         edit.backgroundColor = .orange
         
-        let delete = UITableViewRowAction(style: .normal, title: "Delete") { action, index in
-            
-            self.handles.remove(at: editActionsForRowAt.row)
-            
-            tableView.deleteRows(at: [editActionsForRowAt], with: .automatic)
+        let delete = UITableViewRowAction(style: .normal, title: "Delete") {
+            action,
+            index in self.handles.remove(at: editActionsForRowAt.row)
+                tableView.deleteRows(at: [editActionsForRowAt], with: .automatic)
         }
         delete.backgroundColor = .red
         
         return [delete, edit]
     }
     
-    func editInfo(){
-        
+    func editInfo() {
         loadTableData()
         firstName.insertText(userInfo.fname)
         lastName.insertText(userInfo.lname)

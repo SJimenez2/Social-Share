@@ -28,8 +28,7 @@ class QRViewController: UIViewController {
         let deviceDescovery = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualCamera], mediaType: AVMediaType.video, position: .back)
         let captureDevice = deviceDescovery.devices.first
         
-        do
-        {
+        do {
             let input = try AVCaptureDeviceInput(device: captureDevice!)
             session.addInput(input)
             
@@ -40,8 +39,7 @@ class QRViewController: UIViewController {
             
             output.metadataObjectTypes = [AVMetadataObject.ObjectType.qr]
         }
-        catch
-        {
+        catch {
             print ("ERROR")
         }
         
@@ -85,11 +83,13 @@ extension QRViewController: AVCaptureMetadataOutputObjectsDelegate {
     func metadataOutput(_ captureOutput: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         
         if metadataObjects.count != 0 {
-            if let object = metadataObjects[0] as? AVMetadataMachineReadableCodeObject {
-                if object.type == AVMetadataObject.ObjectType.qr {
-                    theirInfo = object.stringValue!
-                    performSegue(withIdentifier: "addAccounts", sender: self)
-                }
+            return
+        }
+        
+        if let object = metadataObjects[0] as? AVMetadataMachineReadableCodeObject {
+            if object.type == AVMetadataObject.ObjectType.qr {
+                theirInfo = object.stringValue!
+                performSegue(withIdentifier: "addAccounts", sender: self)
             }
         }
     }

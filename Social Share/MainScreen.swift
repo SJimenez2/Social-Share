@@ -80,8 +80,9 @@ class MainScreen: UIViewController {
         addScreen.layer.cornerRadius = 5
         addScreen.layer.masksToBounds = true
         
-        info = (NSKeyedUnarchiver.unarchiveObject(withFile: UserDefaults.standard.object(forKey: "File Path") as! String) as! UserInfo)
-        qrString = generalInfo.createQRString(user: info!)
+//        info = (NSKeyedUnarchiver.unarchiveObject(withFile: UserDefaults.standard.object(forKey: "File Path") as! String) as! UserInfo)
+//        qrString = generalInfo.createQRString(user: info!)
+        qrString = ""
         createQRCode(qrString: qrString)
     }
     

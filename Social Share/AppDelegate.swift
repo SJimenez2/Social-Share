@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         UserDefaults.standard.set(false, forKey: "Opened Before")
-        
+    
         if UserDefaults.standard.bool(forKey: "Opened Before") {
                 
             self.window = UIWindow(frame: UIScreen.main.bounds)
@@ -34,6 +34,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         return true
+    }
+    
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

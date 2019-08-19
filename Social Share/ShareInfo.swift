@@ -20,10 +20,7 @@ class SharingInfo: UIViewController {
     var firstName = ""
     var lastName = ""
     var phone = ""
-    var email1 = ""
-    var facebook1 = ""
-    var twitter1 = ""
-    var instagram1 = ""
+    var email = ""
     var handles: [Handle] = []
     
     var userInfo = UserInfo()
@@ -55,25 +52,32 @@ class SharingInfo: UIViewController {
         let info = UserDefaults.standard.object(forKey: "SharedInfo") as! String
         let theirInfo = info.components(separatedBy: ",")
         
-        if theirInfo[3] == "" {
-            Email.setOn(false, animated: false)
-        }
-        if theirInfo[4] == "" {
-            Facebook.setOn(false, animated: false)
-        }
-        if theirInfo[5] == "" {
-            Twitter.setOn(false, animated: false)
-        }
-        if theirInfo[6].dropLast() == "" {
-            Instagram.setOn(false, animated: false)
-        }
+        Email.setOn(theirInfo[3] == "", animated: false)
+        Facebook.setOn(theirInfo[4] == "", animated: false)
+        Twitter.setOn(theirInfo[5] == "", animated: false)
+        Instagram.setOn(theirInfo[6].dropLast() == "", animated: false)
+
+        
+//        if theirInfo[3] == "" {
+//            Email.setOn(false, animated: false)
+//        }
+//        if theirInfo[4] == "" {
+//            Facebook.setOn(false, animated: false)
+//        }
+//        if theirInfo[5] == "" {
+//            Twitter.setOn(false, animated: false)
+//        }
+//        if theirInfo[6].dropLast() == "" {
+//            Instagram.setOn(false, animated: false)
+//        }
     }
     
     //defaults to sending everything each time shared
     @IBAction func doneButton(_ sender: UIButton) {
         checkdata()
         
-        let sharedUser = UserInfo.init(fname1: firstName, lname1: lastName, phone1: phone, email1: email1, handlesArray: handles)
+        let sharedUser = UserInfo()
+        sharedUser.setData(fname: firstName, lname: lastName, phone: phone, email: email, handlesArray: handles)
         let qrString = generalInfo.createQRString(user: sharedUser)
         mainScreen.createQRCode(qrString: qrString)
         self.dismiss(animated: true, completion: nil)
@@ -88,18 +92,15 @@ class SharingInfo: UIViewController {
         phone = (userInfo.phone)
         
         if Email.isOn {
-            email1 = (userInfo.email)
+            email = (userInfo.email)
         }
         if Facebook.isOn {
-            facebook1 = (userInfo.handles[0])
             handles.append(Handle.init(handle1: userInfo.handles[0], platform1: "Facebook"))
         }
         if Twitter.isOn {
-            twitter1 = (userInfo.handles[1])
             handles.append(Handle.init(handle1: userInfo.handles[1], platform1: "Twitter"))
         }
         if Instagram.isOn {
-            instagram1 = (userInfo.handles[2])
             handles.append(Handle.init(handle1: userInfo.handles[2], platform1: "Instagram"))
         }
     }
